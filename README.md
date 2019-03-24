@@ -10,15 +10,19 @@
 #### Compound
 * [tuple](): primitive, stack (fixed len)
 * [array](): primitive, stack (fixed len)
-* [Vector](): collection, heap (dynamic array)
-* [String](): collection, heap
-* [Hash map](): collection, heap
+* [slice](): reference to String, string literals, e.g. `&var[..]`
+* [struct](): ownership (like oop objects)
+* [enum](): ownership, for pattern matching & error handling `enum Var`
+* [Vector](): ownership, heap (dynamic array), e.g. `Vec<T>`
+* [String](): ownership, heap
+* [Hash map](): ownership, heap
 
 ## Control Flows
 * `if` `else if` `else`
 * `loop` `break` `continue`
 * `while`
 * `for ... in ...` or `for i in (0..11)`
+
 
 ## Ownership
 #### Rules
@@ -29,6 +33,26 @@
 | Borrowed Ref | Owner | Heap Storage  |
 | --- |:---:| ---:|
 | &var| var | bytecode|
+
+
+## Generics, Traits, Lifetimes
+* `Generic Types`: generic placeholder for any type or function
+	* `fn name<T>(..)`
+  * `impl<T> SomeType<T> {..`
+* `Traits`: like interfaces, defines shared methods across types
+	* `impl TraitName for Type`
+	* Trait bound: `pub fn foo<T: TraitName>(var: T)`
+	  ```
+	  fn foo<T, U>(t: T, u: U) -> i32
+	    where T: Trait1 + Trait2,
+	          U: Trait1 + Trait3  {...}
+	  ```
+	* `fn .. -> impl Trait1 {}`: return value has the trait
+
+* `Lifetimes`: Every reference has a lifetime. Need to specify lifetime parameters for **functions or structs that use references**.
+  * `fn foo<'a, 'b>(x: &'a str, y: &'b str) -> &'a &str {...}`
+  * **Elision Rules**: hardcoded cases lifetimes are inferred, e.g. `fn one_param(s: &str) -> &str`
+  * `&'static`: static lifetime that lasts entire duration of program exe
 
 ## Testing
 
@@ -59,6 +83,32 @@ mod tests {
 * `-- --ignored`: only runs ignored tests
 * `--test` *filename*: only runs integration tests
 
+## Enums
+#### Match 
+```
+match some_u8_value {
+    Some(3) => println!("three"),
+    _ => (),
+}
+}
+```
+```
+if let Some(3) = some_u8_value {
+    println!("three");
+}
+```
+
+## Hash map
 
 
-
+## Terminology
+- `Path` is a way of naming an item such as a struct, function, or module.
+    - `module` a way to organize a tree of pub/private fns
+    - `use` a keyword to bring a path into scope
+    - `pub`, a keyword to make items public
+    - `pub use`, makes fns which use a path also externally usable
+    - `pub mod _;` indicates it has a sub mod.
+- `as` Renaming items when bringing them into scope
+- `Packages`: a Cargo feature that let you build, test, and share crates. Can contain at most one lib, many binaries.
+- `Crates`: a binary/executable `[main.rs](http://main.rs)` or a library `lib.rs` (made up of a tree of modules)
+    - `crate roots`: `src/main.rs` and `src/lib.rs`
