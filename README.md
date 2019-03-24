@@ -83,6 +83,20 @@ mod tests {
 * `-- --ignored`: only runs ignored tests
 * `--test` *filename*: only runs integration tests
 
+## Errors
+* **Unrecoverable**: `panic!` macro
+* **Recoverable**: `Result<T, E>` type
+
+	```
+    enum Result<T, E> {
+        Ok(T),
+        Err(E),
+    }
+    // OR, shorthand version: 
+    	f.read_to_string(&mut s)?; // short hand for "match"
+    	Ok(s)
+  ```
+
 ## Enums
 #### Match 
 ```
