@@ -1,5 +1,34 @@
 # rust-cheatsheet
 
+## Data Types:
+#### Scalar
+* [int/uint](): primitive
+* [float](): primitive
+* [bool](): primitive
+* [char](): primitive
+
+#### Compound
+* [tuple](): primitive, stack (fixed len)
+* [array](): primitive, stack (fixed len)
+* [Vector](): collection, heap (dynamic array)
+* [String](): collection, heap
+* [Hash map](): collection, heap
+
+## Control Flows
+* `if` `else if` `else`
+* `loop` `break` `continue`
+* `while`
+* `for ... in ...` or `for i in (0..11)`
+
+## Ownership
+#### Rules
+* Can have ONE mutable reference (in a single scope) BUT NO immutable reference, OR
+* Can have multiple immutable references BUT NO mutable reference
+
+#### Borrowing `var`
+| Borrowed Ref | Owner | Heap Storage  |
+| --- |:---:| ---:|
+| &var| var | bytecode|
 
 ## Testing
 
