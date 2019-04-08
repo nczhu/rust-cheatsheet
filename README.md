@@ -78,6 +78,7 @@ mod tests {
 
 #### Execution
 * `cargo test` *test name*
+* `--lib`: run all tests in lib/file
 * `-- --nocapture`: shows printlns
 * `-- --test-threads=1`: suppresses test concurrency
 * `-- --ignored`: only runs ignored tests
