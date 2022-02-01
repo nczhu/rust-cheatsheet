@@ -42,7 +42,7 @@
 * `Traits`: like interfaces, defines shared methods across types
 	* `impl TraitName for Type`
 	* Trait bound: `pub fn foo<T: TraitName>(var: T)`
-	  ```
+	  ```rust
 	  fn foo<T, U>(t: T, u: U) -> i32
 	    where T: Trait1 + Trait2,
 	          U: Trait1 + Trait3  {...}
@@ -57,7 +57,7 @@
 ## Testing
 
 #### Example
-```
+```rust
 #[cfg(test)]
 mod tests {
 	use super::*;
@@ -88,7 +88,7 @@ mod tests {
 * **Unrecoverable**: `panic!` macro
 * **Recoverable**: `Result<T, E>` type
 
-	```
+```rust
     enum Result<T, E> {
         Ok(T),
         Err(E),
@@ -96,18 +96,18 @@ mod tests {
     // OR, shorthand version: 
     	f.read_to_string(&mut s)?; // short hand for "match"
     	Ok(s)
-  ```
+```
 
 ## Enums
 #### Match 
-```
+```rust
 match some_u8_value {
     Some(3) => println!("three"),
     _ => (),
 }
 }
 ```
-```
+```rust
 if let Some(3) = some_u8_value {
     println!("three");
 }
