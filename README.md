@@ -42,7 +42,7 @@
 * `Traits`: like interfaces, defines shared methods across types
 	* `impl TraitName for Type`
 	* Trait bound: `pub fn foo<T: TraitName>(var: T)`
-	  ```
+	  ```rust
 	  fn foo<T, U>(t: T, u: U) -> i32
 	    where T: Trait1 + Trait2,
 	          U: Trait1 + Trait3  {...}
