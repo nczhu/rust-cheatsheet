@@ -57,7 +57,7 @@
 ## Testing
 
 #### Example
-```
+```rust
 #[cfg(test)]
 mod tests {
 	use super::*;
@@ -88,7 +88,7 @@ mod tests {
 * **Unrecoverable**: `panic!` macro
 * **Recoverable**: `Result<T, E>` type
 
-	```
+```rust
     enum Result<T, E> {
         Ok(T),
         Err(E),
@@ -96,18 +96,18 @@ mod tests {
     // OR, shorthand version: 
     	f.read_to_string(&mut s)?; // short hand for "match"
     	Ok(s)
-  ```
+```
 
 ## Enums
 #### Match 
-```
+```rust
 match some_u8_value {
     Some(3) => println!("three"),
     _ => (),
 }
 }
 ```
-```
+```rust
 if let Some(3) = some_u8_value {
     println!("three");
 }
